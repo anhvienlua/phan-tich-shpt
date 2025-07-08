@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dịch vụ Sinh học Phân tử</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f4f4f4; }
+    header { background: #2c3e50; color: white; padding: 20px; text-align: center; }
+    nav { background: #34495e; padding: 10px; text-align: center; }
+    nav a { color: white; margin: 0 15px; text-decoration: none; }
+    section { padding: 20px; background: white; margin: 20px auto; width: 90%; max-width: 1000px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    .service { margin-bottom: 20px; }
+    footer { background: #2c3e50; color: white; text-align: center; padding: 10px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+    th, td { padding: 10px; border: 1px solid #ccc; text-align: center; }
+    .price-select { width: 100%; padding: 5px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Dịch vụ Phân tích Sinh học Phân tử</h1>
+  <p>Chuyên phân tích mẫu thực vật nhóm lương thực: Lúa, Ngô, Sắn, Khoai...</p>
+</header>
+
+<nav>
+  <a href="#services">Dịch vụ</a>
+  <a href="#pricing">Bảng giá</a>
+  <a href="#contact">Liên hệ</a>
+</nav>
+
+<section id="services">
+  <h2>Dịch vụ của chúng tôi</h2>
+
+  <div class="service">
+    <h3>🔬 Xác định tính trạng mục tiêu</h3>
+    <p>Phân tích biểu hiện gene liên quan đến năng suất, khả năng chống chịu sâu bệnh và môi trường.</p>
+  </div>
+
+  <div class="service">
+    <h3>🧬 Phân tích đa hình DNA</h3>
+    <p>Ứng dụng kỹ thuật PCR, RFLP, SSR để xác định sự đa dạng di truyền trong giống cây trồng.</p>
+  </div>
+
+  <div class="service">
+    <h3>🧪 Đánh giá kiểu gene</h3>
+    <p>Xác định các alen đặc hiệu phục vụ chọn giống nhanh (MAS - Marker-Assisted Selection).</p>
+  </div>
+</section>
+
+<section id="pricing">
+  <h2>📊 Bảng giá tùy chỉnh</h2>
+
+  <label for="sampleType">Chọn loại mẫu:</label>
+  <select id="sampleType" class="price-select">
+    <option value="lua">Lúa</option>
+    <option value="ngo">Ngô</option>
+    <option value="san">Sắn</option>
+  </select>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Dịch vụ</th>
+        <th>Giá (VNĐ/mẫu)</th>
+      </tr>
+    </thead>
+    <tbody id="priceTable">
+      <!-- Nội dung sẽ được cập nhật bằng JavaScript -->
+    </tbody>
+  </table>
+</section>
+
+<section id="contact">
+  <h2>📞 Liên hệ</h2>
+  <p>Email: sinhoc@mophan.vn</p>
+  <p>Hotline: 0987 654 321</p>
+  <p>Địa chỉ: Trung tâm Công nghệ Sinh học, TP.HCM</p>
+</section>
+
+<footer>
+  &copy; 2025 Dịch vụ Phân tích Sinh học Phân tử. All rights reserved.
+</footer>
+
+<script>
+  const priceData = {
+    lua: [
+      ["Xác định tính trạng", "150.000"],
+      ["Phân tích đa hình", "200.000"],
+      ["Đánh giá kiểu gene", "250.000"]
+    ],
+    ngo: [
+      ["Xác định tính trạng", "160.000"],
+      ["Phân tích đa hình", "210.000"],
+      ["Đánh giá kiểu gene", "260.000"]
+    ],
+    san: [
+      ["Xác định tính trạng", "140.000"],
+      ["Phân tích đa hình", "190.000"],
+      ["Đánh giá kiểu gene", "230.000"]
+    ]
+  };
+
+  const sampleSelect = document.getElementById('sampleType');
+  const priceTable = document.getElementById('priceTable');
+
+  function updatePricing() {
+    const selected = sampleSelect.value;
+    const rows = priceData[selected].map(service =>
+      `<tr><td>${service[0]}</td><td>${service[1]}</td></tr>`
+    ).join('');
+    priceTable.innerHTML = rows;
+  }
+
+  sampleSelect.addEventListener('change', updatePricing);
+  updatePricing(); // Load bảng giá mặc định
+</script>
+
+</body>
+</html>
